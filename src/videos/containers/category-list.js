@@ -4,14 +4,14 @@ import {
 } from 'react-native'
 import Empty from '../components/empty'
 import Separator from '../../sections/components/horizontal-separator'
-import Suggestion from '../components/suggestion'
+import Category from '../components/category'
 import Layout from '../components/category-list-layout'
 
 export default class CategoryList extends Component {
   keyExtractor = item => item.id.toString()
   renderEmtpy = () => <Empty text="No hay sugerencias :(" />
   itemSeparator = () => <Separator />
-  renderItem = ({ item }) => <Suggestion {...item} />
+  renderItem = ({ item }) => <Category {...item} />
   render() {
     return (
       <Layout
