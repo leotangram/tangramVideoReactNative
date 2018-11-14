@@ -4,7 +4,6 @@ class Api {
   async getSuggestion(id) {
     const query = await fetch(`${BASE_API}movie_suggestions.json?movie_id=${id}`)
     const data = await query.json()
-    console.log(data.data.movies)
     return data.data.movies
   }
 }
