@@ -1,22 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
+  View,
   FlatList
-} from 'react-native'
-import Empty from '../components/empty'
-import Separator from '../../sections/components/horizontal-separator'
-import Category from '../components/category'
-import Layout from '../components/category-list-layout'
+} from 'react-native';
+import Empty from '../components/empty';
+import Separator from '../../sections/components/horizontal-separator';
+import Category from '../components/category';
+import Layout from '../components/category-list-layout';
+import { connect } from 'react-redux';
 
-export default class CategoryList extends Component {
+function mapStateToProps(state) {
+  return {
+  }
+}
+
+class CategoryList extends Component {
   keyExtractor = item => item.id.toString()
   renderEmtpy = () => <Empty text="No hay sugerencias :(" />
   itemSeparator = () => <Separator />
-  renderItem = ({ item }) => <Category {...item} />
+  renderItem = ({item}) => {
+    return (
+      <Category {...item}/>
+    )
+  }
   render() {
     return (
       <Layout
-        title="Categorías"
-      >
+        title="Categorias"
+        >
         <FlatList
           horizontal
           keyExtractor={this.keyExtractor}
@@ -29,3 +40,5 @@ export default class CategoryList extends Component {
     )
   }
 }
+
+export default CategoryList;
