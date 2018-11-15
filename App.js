@@ -8,7 +8,7 @@ import Header from './src/sections/components/header'
 import API from './utils/api'
 import SuggestionList from './src/videos/containers/suggestion-list'
 import CategoryList from './src/videos/containers/category-list'
-import Video from 'react-native-video'
+import Player from './src/player/containers/player'
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -30,23 +30,14 @@ export default class App extends Component<Props> {
     return (
       <Home>
         <Header />
+        <Player />
         <View
           style={{
             flex: 1,
             height: 100
           }}
         >
-          <Video
-            source={{ uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4' }}
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0
-            }}
-            resizeMode="contain"
-          />
+          
         </View>
         <Text>Buscador</Text>
         <Text>Categorías</Text>
