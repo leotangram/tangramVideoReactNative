@@ -17,13 +17,14 @@ export default function Layout(props) {
           props.loader
         }
       </View>
+      {props.controls}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: '56.25%'
+    paddingTop: '56.25%',
   },
   video: {
     position: 'absolute',
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   }
 })
+
