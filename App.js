@@ -15,18 +15,30 @@ import store from './store'
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    suggestionList: [],
-    categoryList: []
+    // suggestionList: [],
+    // categoryList: []
   }
   async componentDidMount() {
-    const movies = await API.getSuggestion(10)
-    const categories = await API.getMovies()
-    console.log(movies)
-    console.log(categories)
-    this.setState({
-      suggestionList: movies,
-      categoryList: categories
+    const categoryList = await API.getMovies()
+    store.dispatch({
+      type: 'SET_CATEGORY_LIST',
+      payload: {
+        categoryList
+      }
     })
+    const suggestionList = await API.getSuggestion(10)
+    store.dispatch({
+      type: 'SET_SUGGESTION_LIST',
+      payload: {
+        suggestionList
+      }
+    })
+    // console.log(movies)
+    // console.log(categories)
+    // this.setState({
+    //   suggestionList: movies,
+    //   categoryList: categories
+    // })
   }
   render() {
     return (
@@ -36,22 +48,9 @@ export default class App extends Component<Props> {
         <Home>
           <Header />
           <Player />
-          <View
-            style={{
-              flex: 1,
-              height: 100
-            }}
-          >
-
-          </View>
           <Text>Buscador</Text>
-          <Text>Categorías</Text>
-          <CategoryList
-            list={this.state.categoryList}
-          />
-          <SuggestionList
-            list={this.state.suggestionList}
-          />
+          <CategoryList />
+          <SuggestionList />
         </Home>
       </Provider>
     );
