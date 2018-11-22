@@ -13,7 +13,6 @@ export default function VerticalSeparator(props) {
         borderTopColor: (props.color) ? props.color : '#eaeaea'
       }
     ]}>
-      <Text>Esto es un separador</Text>
     </View>
   )
 }

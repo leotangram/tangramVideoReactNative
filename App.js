@@ -10,7 +10,8 @@ import SuggestionList from './src/videos/containers/suggestion-list'
 import CategoryList from './src/videos/containers/category-list'
 import Player from './src/player/containers/player'
 import { Provider } from 'react-redux'
-import store from './store'
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from './store'
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -45,13 +46,18 @@ export default class App extends Component<Props> {
       <Provider
         store={store}
       >
-        <Home>
-          <Header />
-          <Player />
-          <Text>Buscador</Text>
-          <CategoryList />
-          <SuggestionList />
-        </Home>
+        <PersistGate
+          loading={<Text>Cargando...</Text>}
+          persistor={persistor}
+        >
+          <Home>
+            <Header />
+            <Player />
+            <Text>Buscador</Text>
+            <CategoryList />
+            <SuggestionList />
+          </Home>
+        </PersistGate>
       </Provider>
     );
   }
