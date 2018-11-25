@@ -10,10 +10,10 @@ import {
 export default function Loading(props) {
   return(
     <View style={styles.container}>
-      <Image
+      {/* <Image
         source={require('../../../assets/logo.png')}
         style={styles.logo}
-      />
+      /> */}
       <ActivityIndicator />
     </View>
   )
